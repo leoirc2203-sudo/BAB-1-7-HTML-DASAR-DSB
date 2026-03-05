@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Form | HTML Mastery</title>
+    <style>
+        /* ====================================
+           HTML MASTERY - MODERN DARK THEME
+           ==================================== */
+        
+        /* Font & Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 24px;
+            position: sticky;
+            top: 30px;
+            border: 1px solid #334155;
+        }
+        
+        .sidebar h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 12px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 14px;
+        }
+        
+        .sidebar a:hover {
+            background: #2d3a4f;
+            color: white;
+        }
+        
+        .sidebar a.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Progress */
+        .progress {
+            margin-top: 30px;
+            background: #2d3a4f;
+            height: 8px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 70%;
+            height: 100%;
+            background: #3b82f6;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+        
+        /* Content */
+        .content {
+            background: #1e293b;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #334155;
+        }
+        
+        .bab-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+        
+        .bab-desc {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 20px;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 span {
+            background: #2d3a4f;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        
+        /* Code Box */
+        .code-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+            font-family: monospace;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+        
+        .copy-btn {
+            background: #2d3a4f;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #3b82f6;
+        }
+        
+        .code-box pre {
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+        
+        /* Demo Box */
+        .demo-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        
+        .demo-title {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+        
+        .demo-preview {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        select.form-control {
+            cursor: pointer;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-item, .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .radio-item input, .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .btn-submit {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-submit:hover {
+            background: #2563eb;
+        }
+        
+        .btn-reset {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+        
+        .btn-reset:hover {
+            background: #dc2626;
+        }
+        
+        /* Note Boxes */
+        .note {
+            background: #1e2a44;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .tip {
+            background: #1a3a3a;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background: #442a2a;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        /* Task Box */
+        .task-box {
+            background: #2d3a4f;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #3b82f6;
+        }
+        
+        .task-preview {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        /* Navigation */
+        .bab-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+        
+        .bab-nav a {
+            text-decoration: none;
+            background: #2d3a4f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 40px;
+        }
+        
+        .bab-nav a:hover {
+            background: #3b82f6;
+        }
+        
+        .bab-nav .next {
+            background: #3b82f6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+            .content {
+                padding: 25px;
+            }
+            .bab-title {
+                font-size: 2rem;
+            }
+            .radio-group, .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>📚 DAFTAR MATERI</h3>
+            <ul>
+                <li><a href="bab1.html">📖 Bab 1: HTML itu Apa?</a></li>
+                <li><a href="bab2.html">⚡ Bab 2: Tag Dasar</a></li>
+                <li><a href="bab3.html">🔗 Bab 3: Link & Gambar</a></li>
+                <li><a href="bab4.html">📋 Bab 4: List & Tabel</a></li>
+                <li><a href="#" class="active">📝 Bab 5: Form</a></li>
+                <li><a href="bab6.html">🧱 Bab 6: Div & Layout</a></li>
+                <li><a href="bab7.html">🚀 Bab 7: Project</a></li>
+            </ul>
+            
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-text">70% • 5 dari 7 bab</div>
+            
+            <div class="sidebar-tips" style="margin-top: 30px; padding: 20px; background: #0f172a; border-radius: 16px;">
+                <p>💡 <b>Tips:</b> Form itu pintu masuk data user. Pahami baik-baik!</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <h1 class="bab-title">📝 BAB 5: FORM (INPUT DATA)</h1>
+            <div class="bab-desc">
+                "Bikin form buat login, daftar, atau ngirim data ke server!"
+            </div>
+            
+            <!-- 1. STRUKTUR DASAR FORM -->
+            <div class="section">
+                <h2>📋 1. STRUKTUR DASAR FORM <span>&lt;form&gt;</span></h2>
+                <p>Tag <code>&lt;form&gt;</code> adalah wadah buat semua elemen input.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('form-dasar')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form action="/proses.php" method="post"&gt;
+    &lt;!-- Semua elemen form di sini --&gt;
+    &lt;input type="text" name="nama"&gt;
+    &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="note">
+                    <b>📌 ATRIBUT PENTING:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>action</code> : alamat tujuan data dikirim</li>
+                        <li><code>method</code> : cara kirim data (GET atau POST)</li>
+                        <li><code>GET</code> : data keliatan di URL (buat pencarian)</li>
+                        <li><code>POST</code> : data dikirim diam-diam (buat login/daftar)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 2. INPUT TEXT -->
+            <div class="section">
+                <h2>✏️ 2. INPUT TEXT <span>&lt;input type="text"&gt;</span></h2>
+                <p>Buat input teks pendek kayak nama, email, dll.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('input-text')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;label for="nama"&gt;Nama Lengkap:&lt;/label&gt;
+    &lt;input type="text" id="nama" name="nama" placeholder="Masukkan nama"&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" placeholder="contoh@email.com"&gt;
+    
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" placeholder="******"&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form onsubmit="event.preventDefault(); alert('Contoh form, gak beneran dikirim!')">
+                            <div class="form-group">
+                                <label for="demo-nama">Nama Lengkap:</label>
+                                <input type="text" id="demo-nama" class="form-control" placeholder="Masukkan nama">
+                            </div>
+                            <div class="form-group">
+                                <label for="demo-email">Email:</label>
+                                <input type="email" id="demo-email" class="form-control" placeholder="contoh@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="demo-password">Password:</label>
+                                <input type="password" id="demo-password" class="form-control" placeholder="******">
+                            </div>
+                            <button type="submit" class="btn-submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <b>💡 TYPE LAINNYA:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>type="email"</code> : validasi email</li>
+                        <li><code>type="password"</code> : karakter disembunyiin</li>
+                        <li><code>type="number"</code> : cuma angka</li>
+                        <li><code>type="tel"</code> : buat nomor telepon</li>
+                        <li><code>type="url"</code> : buat alamat website</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 3. TEXTAREA -->
+            <div class="section">
+                <h2>📄 3. TEXTAREA <span>&lt;textarea&gt;</span></h2>
+                <p>Buat input teks panjang kayak komentar, pesan, deskripsi.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('textarea')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;label for="pesan"&gt;Pesan:&lt;/label&gt;
+    &lt;textarea id="pesan" name="pesan" rows="5" cols="40" 
+        placeholder="Tulis pesan lo di sini..."&gt;&lt;/textarea&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form>
+                            <div class="form-group">
+                                <label for="demo-pesan">Pesan:</label>
+                                <textarea id="demo-pesan" class="form-control" rows="4" placeholder="Tulis pesan lo di sini..."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. RADIO BUTTON -->
+            <div class="section">
+                <h2>🔘 4. RADIO BUTTON <span>Pilih Satu</span></h2>
+                <p>Radio button buat pilihan yang cuma bisa milih SATU.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('radio')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;p&gt;Jenis Kelamin:&lt;/p&gt;
+    &lt;input type="radio" id="pria" name="gender" value="pria"&gt;
+    &lt;label for="pria"&gt;Pria&lt;/label&gt;&lt;br&gt;
+    
+    &lt;input type="radio" id="wanita" name="gender" value="wanita"&gt;
+    &lt;label for="wanita"&gt;Wanita&lt;/label&gt;&lt;br&gt;
+    
+    &lt;input type="radio" id="lain" name="gender" value="lain"&gt;
+    &lt;label for="lain"&gt;Lainnya&lt;/label&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form>
+                            <p style="color: white; margin-bottom: 10px;">Jenis Kelamin:</p>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="demo-pria" name="demo-gender" value="pria">
+                                    <label for="demo-pria">Pria</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="demo-wanita" name="demo-gender" value="wanita">
+                                    <label for="demo-wanita">Wanita</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="demo-lain" name="demo-gender" value="lain">
+                                    <label for="demo-lain">Lainnya</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <b>⚠️ PENTING:</b> Radio button harus punya <code>name</code> yang SAMA biar cuma bisa milih satu!
+                </div>
+            </div>
+            
+            <!-- 5. CHECKBOX -->
+            <div class="section">
+                <h2>✅ 5. CHECKBOX <span>Pilih Banyak</span></h2>
+                <p>Checkbox buat pilihan yang bisa milih LEBIH DARI SATU.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('checkbox')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;p&gt;Hobi:&lt;/p&gt;
+    &lt;input type="checkbox" id="coding" name="hobi[]" value="coding"&gt;
+    &lt;label for="coding"&gt;Coding&lt;/label&gt;&lt;br&gt;
+    
+    &lt;input type="checkbox" id="game" name="hobi[]" value="game"&gt;
+    &lt;label for="game"&gt;Game&lt;/label&gt;&lt;br&gt;
+    
+    &lt;input type="checkbox" id="musik" name="hobi[]" value="musik"&gt;
+    &lt;label for="musik"&gt;Musik&lt;/label&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form>
+                            <p style="color: white; margin-bottom: 10px;">Hobi:</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="demo-coding" name="demo-hobi" value="coding">
+                                    <label for="demo-coding">Coding</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="demo-game" name="demo-hobi" value="game">
+                                    <label for="demo-game">Game</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="demo-musik" name="demo-hobi" value="musik">
+                                    <label for="demo-musik">Musik</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. SELECT (DROPDOWN) -->
+            <div class="section">
+                <h2>📋 6. SELECT DROPDOWN <span>&lt;select&gt;</span></h2>
+                <p>Dropdown buat pilihan yang irit tempat.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('select')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;label for="kota"&gt;Pilih Kota:&lt;/label&gt;
+    &lt;select id="kota" name="kota"&gt;
+        &lt;option value=""&gt;-- Pilih Kota --&lt;/option&gt;
+        &lt;option value="jakarta"&gt;Jakarta&lt;/option&gt;
+        &lt;option value="bandung"&gt;Bandung&lt;/option&gt;
+        &lt;option value="surabaya"&gt;Surabaya&lt;/option&gt;
+        &lt;option value="medan"&gt;Medan&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form>
+                            <div class="form-group">
+                                <label for="demo-kota">Pilih Kota:</label>
+                                <select id="demo-kota" class="form-control">
+                                    <option value="">-- Pilih Kota --</option>
+                                    <option value="jakarta">Jakarta</option>
+                                    <option value="bandung">Bandung</option>
+                                    <option value="surabaya">Surabaya</option>
+                                    <option value="medan">Medan</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 7. BUTTON -->
+            <div class="section">
+               <!-- 7. BUTTON -->
+            <div class="section">
+                <h2>🖱️ 7. BUTTON <span>&lt;button&gt;</span></h2>
+                <p>Tombol buat kirim form atau reset.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('button')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;form&gt;
+    &lt;button type="submit"&gt;Kirim Data&lt;/button&gt;
+    &lt;button type="reset"&gt;Reset Form&lt;/button&gt;
+    &lt;button type="button" onclick="alert('Tombol diklik!')"&gt;
+        Tombol Biasa
+    &lt;/button&gt;
+&lt;/form&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <form onsubmit="event.preventDefault(); alert('Form dikirim!')" onreset="alert('Form direset!')">
+                            <button type="submit" class="btn-submit">Kirim Data</button>
+                            <button type="reset" class="btn-reset">Reset Form</button>
+                            <button type="button" class="btn-submit" style="background: #10b981;" onclick="alert('Tombol diklik!')">Tombol Biasa</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <b>📌 TYPE BUTTON:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>type="submit"</code> : kirim form ke server</li>
+                        <li><code>type="reset"</code> : reset semua input ke default</li>
+                        <li><code>type="button"</code> : tombol biasa (biasa pake JavaScript)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- RINGKASAN -->
+            <div class="section">
+                <h2>📋 RINGKASAN BAB 5</h2>
+                
+                <div class="table-container">
+                    <table class="demo-table">
+                        <tr>
+                            <th>Tag/Type</th>
+                            <th>Fungsi</th>
+                        </tr>
+                        <tr>
+                            <td>&lt;form&gt;</td>
+                            <td>Container form</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="text"&gt;</td>
+                            <td>Input teks pendek</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="email"&gt;</td>
+                            <td>Input email (validasi otomatis)</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="password"&gt;</td>
+                            <td>Input password (bullets)</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="number"&gt;</td>
+                            <td>Input angka</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="radio"&gt;</td>
+                            <td>Pilih satu (name harus sama)</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;input type="checkbox"&gt;</td>
+                            <td>Pilih banyak</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;textarea&gt;</td>
+                            <td>Input teks panjang</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;select&gt; & &lt;option&gt;</td>
+                            <td>Dropdown pilihan</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;button&gt;</td>
+                            <td>Tombol</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;label&gt;</td>
+                            <td>Label buat input (aksesibilitas)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- TUGAS PRAKTIK -->
+            <div class="task-box">
+              <h3>🚀 TUGAS PRAKTIK: Bikin Form Pendaftaran</h3>
+                <p>Buat form pendaftaran dengan elemen:</p>
+                <ul style="color: #cbd5e1; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Nama (text)</li>
+                    <li>Email (email)</li>
+                    <li>Password (password)</li>
+                    <li>Jenis Kelamin (radio)</li>
+                    <li>Hobi (checkbox - minimal 3 pilihan)</li>
+                    <li>Kota (select dropdown)</li>
+                    <li>Pesan (textarea)</li>
+                    <li>Tombol Daftar (submit)</li>
+                </ul>
+                
+                <div class="task-preview">
+                    <h3 style="color: white; margin-bottom: 20px;">📝 Form Pendaftaran</h3>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Pendaftaran berhasil (demo)!')">
+                        <div class="form-group">
+                            <label>Nama Lengkap:</label>
+                            <input type="text" class="form-control" placeholder="Masukkan nama">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" placeholder="contoh@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" placeholder="******">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Jenis Kelamin:</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="gender" id="task-pria"> 
+                                    <label for="task-pria">Pria</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" name="gender" id="task-wanita">
+                                    <label for="task-wanita">Wanita</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Hobi:</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="task-coding"> <label for="task-coding">Coding</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="task-game"> <label for="task-game">Game</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="task-musik"> <label for="task-musik">Musik</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kota:</label>
+                            <select class="form-control">
+                                <option>Jakarta</option>
+                                <option>Bandung</option>
+                                <option>Surabaya</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Pesan:</label>
+                            <textarea class="form-control" rows="3" placeholder="Tulis pesan..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">📝 Daftar</button>
+                        <button type="reset" class="btn-reset">↺ Reset</button>
+                    </form>
+                </div>
+                
+                <button class="btn" style="margin-top: 20px;" onclick="alert('Sekarang giliran lo buat form sendiri!')">✨ KERJAIN TUGAS</button>
+            </div>
+            
+            <!-- NAVIGASI -->
+            <div class="bab-nav">
+                <a href="bab-6.html">Lanjut ke Bab 6</a>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2026 HTML Mastery • Dibuat dengan ❤️ buat anak muda yang pengen jago coding</p>
+    </footer>
+    
+    <script>
+        function copyCode(type) {
+            let code = '';
+            
+            if (type === 'form-dasar') {
+                code = '<form action="/proses.php" method="post">\n    <!-- Semua elemen form di sini -->\n    <input type="text" name="nama">\n    <button type="submit">Kirim</button>\n</form>';
+            } else if (type === 'input-text') {
+                code = '<form>\n    <label for="nama">Nama Lengkap:</label>\n    <input type="text" id="nama" name="nama" placeholder="Masukkan nama">\n    \n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email" placeholder="contoh@email.com">\n    \n    <label for="password">Password:</label>\n    <input type="password" id="password" name="password" placeholder="******">\n</form>';
+            } else if (type === 'textarea') {
+                code = '<form>\n    <label for="pesan">Pesan:</label>\n    <textarea id="pesan" name="pesan" rows="5" cols="40" \n        placeholder="Tulis pesan lo di sini..."></textarea>\n</form>';
+            } else if (type === 'radio') {
+                code = '<form>\n    <p>Jenis Kelamin:</p>\n    <input type="radio" id="pria" name="gender" value="pria">\n    <label for="pria">Pria</label><br>\n    \n    <input type="radio" id="wanita" name="gender" value="wanita">\n    <label for="wanita">Wanita</label><br>\n    \n    <input type="radio" id="lain" name="gender" value="lain">\n    <label for="lain">Lainnya</label>\n</form>';
+            } else if (type === 'checkbox') {
+                code = '<form>\n    <p>Hobi:</p>\n    <input type="checkbox" id="coding" name="hobi[]" value="coding">\n    <label for="coding">Coding</label><br>\n    \n    <input type="checkbox" id="game" name="hobi[]" value="game">\n    <label for="game">Game</label><br>\n    \n    <input type="checkbox" id="musik" name="hobi[]" value="musik">\n    <label for="musik">Musik</label>\n</form>';
+            } else if (type === 'select') {
+                code = '<form>\n    <label for="kota">Pilih Kota:</label>\n    <select id="kota" name="kota">\n        <option value="">-- Pilih Kota --</option>\n        <option value="jakarta">Jakarta</option>\n        <option value="bandung">Bandung</option>\n        <option value="surabaya">Surabaya</option>\n        <option value="medan">Medan</option>\n    </select>\n</form>';
+            } else if (type === 'button') {
+                code = '<form>\n    <button type="submit">Kirim Data</button>\n    <button type="reset">Reset Form</button>\n    <button type="button" onclick="alert(\'Tombol diklik!\')">\n        Tombol Biasa\n    </button>\n</form>';
+            }
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Kode berhasil di-copy!');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar HTML - Untuk Anak Muda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .nav-links a:hover {
+            border-bottom: 2px solid white;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #2563eb;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #475569;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #2563eb;
+            color: white;
+        }
+        
+        /* Konten Utama */
+        .content {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .bab-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0f172a;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        
+        .materi {
+            line-height: 1.7;
+        }
+        
+        .materi h3 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px;
+            color: #2563eb;
+        }
+        
+        .materi p {
+            margin-bottom: 15px;
+            color: #334155;
+        }
+        
+        /* Kotak kode */
+        .code-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .code-box pre {
+            margin: 0;
+        }
+        
+        .code-copy {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .code-copy:hover {
+            background: #475569;
+        }
+        
+        /* Demo interaktif */
+        .demo-box {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            background: #f8fafc;
+        }
+        
+        .demo-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+        
+        .demo-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 15px;
+        }
+        
+        .try-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .try-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Catatan penting */
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Navigasi antar bab */
+        .bab-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .bab-nav a {
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .bab-nav a:hover {
+            background: #1d4ed8;
+            transform: translateX(-3px);
+        }
+        
+        .bab-nav .next {
+            background: #10b981;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 30px 5%;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .nav-links a {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                📚 HTML4U
+                <span>Belajar Santai</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Materi</a>
+                <a href="#">Proyek</a>
+                <a href="#">Tentang</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Sidebar Daftar Bab -->
+        <aside class="sidebar">
+            <h3>📋 DAFTAR BAB</h3>
+            <ul>
+                <li><a href="#" class="active">Bab 1: HTML Itu Apa?</a></li>
+                <li><a href="#">Bab 2: Tag Dasar</a></li>
+                <li><a href="#">Bab 3: Link & Gambar</a></li>
+                <li><a href="#">Bab 4: List & Tabel</a></li>
+                <li><a href="#">Bab 5: Form Input</a></li>
+                <li><a href="#">Bab 6: Div & Layout</a></li>
+                <li><a href="#">Bab 7: Project Akhir</a></li>
+            </ul>
+            
+            <h3 style="margin-top: 30px;">📊 PROGRESS</h3>
+            <div style="background: #e2e8f0; height: 10px; border-radius: 5px;">
+                <div style="width: 15%; background: #2563eb; height: 10px; border-radius: 5px;"></div>
+            </div>
+            <p style="text-align: center; margin-top: 10px;">15% selesai</p>
+        </aside>
+
+        <!-- Konten Materi -->
+        <main class="content">
+            <h1 class="bab-title">📘 BAB 1: HTML ITU APA SIH?</h1>
+            
+            <div class="materi">
+                <!-- Penjelasan dengan analogi -->
+                <h3>🏗️ Analogi: Rumah & Cor Beton</h3>
+                <p>Bayangin lo mau bikin rumah. <strong>HTML</strong> itu kayak <strong>cor beton + kerangka rumah</strong>. Yang bikin rumah punya bentuk: ada tembok, ada jendela, ada pintu. Tanpa cor, rumah ga bakal berdiri!</p>
+                
+                <p>Nah, kalo di website: <strong>HTML</strong> bikin struktur: ada judul, ada paragraf, ada gambar, ada tombol. <strong>CSS</strong> itu cat & keramiknya (biar bagus), <strong>JavaScript</strong> itu listrik & airnya (biar hidup).</p>
+                
+                <!-- Kotak kode -->
+                <h3>💻 Struktur HTML Paling Dasar</h3>
+                <div class="code-box">
+                    <button class="code-copy" onclick="copyCode()">📋 Copy</button>
+                    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Judul Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Halo Dunia!&lt;/h1&gt;
+    &lt;p&gt;Ini website pertamaku.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+                
+                <!-- Penjelasan tiap bagian -->
+                <h3>🔍 Penjelasan Kode:</h3>
+                <ul style="margin-left: 30px; margin-bottom: 20px;">
+                    <li><strong>&lt;!DOCTYPE html&gt;</strong> : Ngasih tau browser "Ini lho file HTML"</li>
+                    <li><strong>&lt;html&gt;</strong> : Tag pembuka, semua konten ada di dalem sini</li>
+                    <li><strong>&lt;head&gt;</strong> : Kepala website (buat settingan, judul, dll)</li>
+                    <li><strong>&lt;title&gt;</strong> : Judul yang muncul di tab browser</li>
+                    <li><strong>&lt;body&gt;</strong> : Badan website (isi yang keliatan)</li>
+                    <li><strong>&lt;h1&gt;</strong> : Heading/judul utama (paling gede)</li>
+                    <li><strong>&lt;p&gt;</strong> : Paragraf</li>
+                </ul>
+                
+                <!-- Demo interaktif -->
+                <h3>🎮 COBA LANGSUNG!</h3>
+                <div class="demo-box">
+                    <div class="demo-title">▶️ Hasil dari kode di atas:</div>
+                    <div class="demo-area">
+                        <h1 style="color: #2563eb;">Halo Dunia!</h1>
+                        <p>Ini website pertamaku.</p>
+                    </div>
+                    
+                    <button class="try-btn" onclick="alert('Kode akan jalan!')">Jalankan Kode</button>
+                    <button class="try-btn" style="background: #10b981;" onclick="document.querySelector('.demo-area').innerHTML = '<h1 style=color:#2563eb;>Halo Dunia!</h1><p>Ini website pertamaku.</p>'">Reset</button>
+                </div>
+                
+                <!-- Catatan penting -->
+                <div class="note">
+                    <strong>📌 CATATAN PENTING:</strong>
+                    <p>HTML itu <strong>bukan bahasa programming</strong>, tapi <em>markup language</em>. Maksudnya? HTML cuma buat <strong>nandain</strong> mana judul, mana paragraf, mana gambar. Ga ada logika matematika atau kondisi di HTML. Tapi HTML adalah <strong>DASAR</strong> dari semua website!</p>
+                </div>
+                
+                <!-- Tools yang dibutuhkan -->
+                <h3>🛠️ Tools yang Lo Butuhin</h3>
+                <ul style="margin-left: 30px;">
+                    <li><strong>Text Editor:</strong> Notepad, VS Code, atau Acode (kalo di HP)</li>
+                    <li><strong>Browser:</strong> Chrome, Firefox, Edge (buat liat hasilnya)</li>
+                    <li><strong>Semangat!</strong> Yang paling penting</li>
+                </ul>
+                
+                <!-- Tugas praktik -->
+                <h3>📝 TUGAS PRAKTIK:</h3>
+                <p>Buka text editor lo, ketik kode di atas, save sebagai <strong>pertamaku.html</strong>, terus buka pake browser. Kalo keliatan tulisannya "Halo Dunia!", SELAMAT! Lo baru aja bikin website pertama!</p>
+            </div>
+            
+            <!-- Navigasi antar bab -->
+            <div class="bab-nav">
+                <a href="bab-2.html">Lanjut ke Bab 2</a>
+              
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 HTML4U - Belajar HTML Santai buat Anak Muda. Dibuat pake ❤️ oleh noellee388</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Follow IG: @lleon3l | TikTok: @noellee388</p>
+    </footer>
+
+  
+
+<a href="bab-2.html">Lanjut ke Bab 2</a>
+</body>
+</html>

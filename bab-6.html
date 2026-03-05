@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Div & Layout | HTML Mastery</title>
+    <style>
+        /* ====================================
+           HTML MASTERY - MODERN DARK THEME
+           ==================================== */
+        
+        /* Font & Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 24px;
+            position: sticky;
+            top: 30px;
+            border: 1px solid #334155;
+        }
+        
+        .sidebar h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 12px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 14px;
+        }
+        
+        .sidebar a:hover {
+            background: #2d3a4f;
+            color: white;
+        }
+        
+        .sidebar a.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Progress */
+        .progress {
+            margin-top: 30px;
+            background: #2d3a4f;
+            height: 8px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 85%;
+            height: 100%;
+            background: #3b82f6;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+        
+        /* Content */
+        .content {
+            background: #1e293b;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #334155;
+        }
+        
+        .bab-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+        
+        .bab-desc {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 20px;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 span {
+            background: #2d3a4f;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        
+        /* Code Box */
+        .code-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+            font-family: monospace;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+        
+        .copy-btn {
+            background: #2d3a4f;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #3b82f6;
+        }
+        
+        .code-box pre {
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+        
+        /* Demo Box */
+        .demo-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        
+        .demo-title {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+        
+        .demo-preview {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        
+        /* Div Demo Styling */
+        .div-demo {
+            background: #0f172a;
+            border: 2px dashed #3b82f6;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 12px;
+        }
+        
+        .div-demo2 {
+            background: #2d3a4f;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .layout-demo {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 16px;
+        }
+        
+        .layout-header {
+            background: #3b82f6;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .layout-sidebar {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 30%;
+            float: left;
+            margin-right: 15px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .layout-content {
+            background: #f59e0b;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 65%;
+            float: left;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .layout-footer {
+            background: #8b5cf6;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: center;
+            clear: both;
+        }
+        
+        .flex-demo {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .flex-item {
+            background: #3b82f6;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .grid-item {
+            background: #8b5cf6;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        /* Note Boxes */
+        .note {
+            background: #1e2a44;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .tip {
+            background: #1a3a3a;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background: #442a2a;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        /* Task Box */
+        .task-box {
+            background: #2d3a4f;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #3b82f6;
+        }
+        
+        .task-preview {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        /* Navigation */
+        .bab-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+        
+        .bab-nav a {
+            text-decoration: none;
+            background: #2d3a4f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 40px;
+        }
+        
+        .bab-nav a:hover {
+            background: #3b82f6;
+        }
+        
+        .bab-nav .next {
+            background: #3b82f6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+            .content {
+                padding: 25px;
+            }
+            .bab-title {
+                font-size: 2rem;
+            }
+            .layout-sidebar, .layout-content {
+                width: 100%;
+                float: none;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .grid-demo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>📚 DAFTAR MATERI</h3>
+            <ul>
+                <li><a href="bab1.html">📖 Bab 1: HTML itu Apa?</a></li>
+                <li><a href="bab2.html">⚡ Bab 2: Tag Dasar</a></li>
+                <li><a href="bab3.html">🔗 Bab 3: Link & Gambar</a></li>
+                <li><a href="bab4.html">📋 Bab 4: List & Tabel</a></li>
+                <li><a href="bab5.html">📝 Bab 5: Form</a></li>
+                <li><a href="#" class="active">🧱 Bab 6: Div & Layout</a></li>
+                <li><a href="bab7.html">🚀 Bab 7: Project</a></li>
+            </ul>
+            
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-text">85% • 6 dari 7 bab</div>
+            
+            <div class="sidebar-tips" style="margin-top: 30px; padding: 20px; background: #0f172a; border-radius: 16px;">
+                <p>💡 <b>Tips:</b> Div itu kayak kontainer buat ngebungkus elemen lain!</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <h1 class="bab-title">🧱 BAB 6: DIV & LAYOUT</h1>
+            <div class="bab-desc">
+                "Div itu kontainer ajaib buat ngatur tata letak website!"
+            </div>
+            
+            <!-- 1. APA ITU DIV? -->
+            <div class="section">
+                <h2>📦 1. APA ITU DIV? <span>&lt;div&gt;</span></h2>
+                <p><code>&lt;div&gt;</code> (division) adalah tag yang gunanya buat <strong>mengelompokkan elemen</strong>. Div itu kayak kontainer atau kotak yang bisa lo pake buat ngebungkus elemen HTML lain.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('div-dasar')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="background: #1e293b; padding: 20px;"&gt;
+    &lt;h2&gt;Judul dalam div&lt;/h2&gt;
+    &lt;p&gt;Ini paragraf dalam div. Semua yang di sini jadi satu kelompok.&lt;/p&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <div style="background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155;">
+                            <h3 style="color: white; margin-bottom: 10px;">Judul dalam div</h3>
+                            <p style="color: #cbd5e1;">Ini paragraf dalam div. Semua yang di sini jadi satu kelompok.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <b>📌 KENAPA PAKE DIV?</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Buat ngelompokin elemen yang related</li>
+                        <li>Buat ngasih style CSS ke sekelompok elemen</li>
+                        <li>Buat ngatur layout dengan Flexbox/Grid</li>
+                        <li>Buat bikin struktur website yang rapi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 2. DIV BERSARANG (NESTED DIV) -->
+            <div class="section">
+                <h2>🪆 2. DIV BERSARANG <span>Div di dalam Div</span></h2>
+                <p>Div bisa di dalam div lagi. Kayak kardus di dalam kardus.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('div-nested')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="background: #2d3a4f; padding: 20px;"&gt;
+    &lt;h3&gt;Div Luar&lt;/h3&gt;
+    &lt;div style="background: #0f172a; padding: 15px; margin: 10px 0;"&gt;
+        &lt;p&gt;Div dalam 1&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div style="background: #0f172a; padding: 15px; margin: 10px 0;"&gt;
+        &lt;p&gt;Div dalam 2&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <div style="background: #2d3a4f; padding: 20px; border-radius: 12px;">
+                            <h3 style="color: white; margin-bottom: 10px;">Div Luar</h3>
+                            <div style="background: #0f172a; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155;">
+                                <p style="color: #cbd5e1;">Div dalam 1</p>
+                            </div>
+                            <div style="background: #0f172a; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155;">
+                                <p style="color: #cbd5e1;">Div dalam 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. LAYOUT KLASIK DENGAN DIV -->
+            <div class="section">
+                <h2>🏗️ 3. LAYOUT KLASIK <span>Header, Content, Sidebar, Footer</span></h2>
+                <p>Dengan div, lo bisa bikin layout website klasik yang punya header, sidebar, content, dan footer.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('layout-classic')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div class="header"&gt;HEADER&lt;/div&gt;
+&lt;div class="sidebar"&gt;SIDEBAR&lt;/div&gt;
+&lt;div class="content"&gt;CONTENT&lt;/div&gt;
+&lt;div class="footer"&gt;FOOTER&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (pake CSS float):</div>
+                    <div class="demo-preview">
+                        <div class="layout-demo">
+                            <div class="layout-header">HEADER</div>
+                            <div class="clearfix">
+                                <div class="layout-sidebar">SIDEBAR</div>
+                                <div class="layout-content">CONTENT UTAMA</div>
+                            </div>
+                            <div class="layout-footer">FOOTER</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <b>💡 CATATAN:</b> Layout di atas pake properti CSS <code>float</code>. Tapi sekarang lebih sering pake <strong>Flexbox</strong> atau <strong>Grid</strong> karena lebih gampang diatur!
+                </div>
+            </div>
+            
+            <!-- 4. LAYOUT DENGAN FLEXBOX -->
+            <div class="section">
+                <h2>📏 4. LAYOUT DENGAN FLEXBOX <span>display: flex</span></h2>
+                <p>Flexbox adalah cara modern buat ngatur layout. Cocok buat layout 1 dimensi (baris atau kolom).</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('flexbox')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="display: flex; gap: 10px;"&gt;
+    &lt;div style="flex: 1;"&gt;Kolom 1&lt;/div&gt;
+    &lt;div style="flex: 1;"&gt;Kolom 2&lt;/div&gt;
+    &lt;div style="flex: 1;"&gt;Kolom 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (3 kolom sama lebar):</div>
+                    <div class="demo-preview">
+                        <div class="flex-demo">
+                            <div class="flex-item">Kolom 1</div>
+                            <div class="flex-item">Kolom 2</div>
+                            <div class="flex-item">Kolom 3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML (dengan ukuran berbeda)</span>
+                        <button class="copy-btn" onclick="copyCode('flexbox-diff')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="display: flex; gap: 10px;"&gt;
+    &lt;div style="flex: 1;"&gt;Sidebar (1)&lt;/div&gt;
+    &lt;div style="flex: 3;"&gt;Content (3x lebih besar)&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (sidebar + content):</div>
+                    <div class="demo-preview">
+                        <div style="display: flex; gap: 10px;">
+                            <div style="flex: 1; background: #10b981; color: white; padding: 20px; border-radius: 12px; text-align: center;">Sidebar</div>
+                            <div style="flex: 3; background: #3b82f6; color: white; padding: 20px; border-radius: 12px; text-align: center;">Content Utama</div>
+                        </div>
+                    </div
+                  </div>
+            </div>
+            
+            <!-- 5. LAYOUT DENGAN CSS GRID -->
+            <div class="section">
+                <h2>🔲 5. LAYOUT DENGAN CSS GRID <span>display: grid</span></h2>
+                <p>Grid adalah cara modern buat layout 2 dimensi (baris DAN kolom).</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('grid')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+    &lt;div&gt;Item 4&lt;/div&gt;
+    &lt;div&gt;Item 5&lt;/div&gt;
+    &lt;div&gt;Item 6&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (grid 3 kolom):</div>
+                    <div class="demo-preview">
+                        <div class="grid-demo">
+                            <div class="grid-item">Item 1</div>
+                            <div class="grid-item">Item 2</div>
+                            <div class="grid-item">Item 3</div>
+                            <div class="grid-item">Item 4</div>
+                            <div class="grid-item">Item 5</div>
+                            <div class="grid-item">Item 6</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML (layout kompleks)</span>
+                        <button class="copy-btn" onclick="copyCode('grid-complex')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;div style="display: grid; grid-template-columns: 200px 1fr; gap: 10px;"&gt;
+    &lt;div style="background: #10b981;"&gt;Sidebar 200px&lt;/div&gt;
+    &lt;div style="background: #3b82f6;"&gt;Content sisanya&lt;/div&gt;
+    &lt;div style="grid-column: span 2; background: #8b5cf6;"&gt;Footer (gabung 2 kolom)&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </div>
+            <!-- 6. SEMANTIC HTML -->
+            <div class="section">
+                <h2>🏷️ 6. SEMANTIC HTML <span>Header, Nav, Main, Article, Section, Footer</span></h2>
+                <p>HTML5 punya tag semantic yang lebih jelas maknanya daripada div. Tapi fungsinya sama: buat ngelompokin konten.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('semantic')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;header&gt;Ini header website&lt;/header&gt;
+&lt;nav&gt;Ini menu navigasi&lt;/nav&gt;
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+        &lt;p&gt;Isi artikel...&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;Ini sidebar (konten sampingan)&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;Ini footer&lt;/footer&gt;</pre>
+                </div>
+                
+                <div class="note">
+                    <b>📌 PERBEDAAN DIV VS SEMANTIC:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>&lt;div&gt;</code> : generic container (gak ada makna khusus)</li>
+                        <li><code>&lt;header&gt;</code> : bagian kepala halaman</li>
+                        <li><code>&lt;nav&gt;</code> : navigasi</li>
+                        <li><code>&lt;main&gt;</code> : konten utama</li>
+                        <li><code>&lt;article&gt;</code> : artikel/konten independen</li>
+                        <li><code>&lt;section&gt;</code> : bagian dari halaman</li>
+                        <li><code>&lt;aside&gt;</code> : sidebar (konten sampingan)</li>
+                        <li><code>&lt;footer&gt;</code> : kaki halaman</li>
+                    </ul>
+                </div>
+                
+                <div class="tip">
+                    <b>💡 SARAN:</b> Pake semantic HTML kalo memungkinkan! Lebih bagus buat SEO dan aksesibilitas. Tapi div tetep dipake kalo gak ada semantic tag yang cocok.
+                </div>
+            </div>
+            
+            <!-- 7. CONTOH LAYOUT WEBSITE LENGKAP -->
+            <div class="section">
+     <!-- 7. CONTOH LAYOUT WEBSITE LENGKAP -->
+            <div class="section">
+                <h2>🌐 7. CONTOH LAYOUT WEBSITE LENGKAP</h2>
+                <p>Ini contoh layout website sederhana pake div dan semantic HTML.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('layout-full')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Website Gue&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;Home&lt;/a&gt;
+            &lt;a href="#"&gt;About&lt;/a&gt;
+            &lt;a href="#"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main style="display: flex; gap: 20px;"&gt;
+        &lt;article style="flex: 3;"&gt;
+            &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+            &lt;p&gt;Isi artikel...&lt;/p&gt;
+        &lt;/article&gt;
+        
+        &lt;aside style="flex: 1;"&gt;
+            &lt;h3&gt;Sidebar&lt;/h3&gt;
+            &lt;p&gt;Konten sampingan...&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Website Gue&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (kurang lebih):</div>
+                    <div class="demo-preview">
+                        <div style="background: #0f172a; border-radius: 16px; overflow: hidden;">
+                            <div style="background: #3b82f6; padding: 20px; text-align: center;">
+                                <h3 style="color: white;">Website Gue</h3>
+                                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 10px;">
+                                    <a href="#" style="color: white;">Home</a>
+                                    <a href="#" style="color: white;">About</a>
+                                    <a href="#" style="color: white;">Contact</a>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 20px; padding: 20px;">
+                                <div style="flex: 3; background: #2d3a4f; padding: 20px; border-radius: 12px;">
+                                    <h4 style="color: white;">Judul Artikel</h4>
+                                    <p style="color: #cbd5e1;">Ini adalah contoh artikel. Lo bisa nulis apa aja di sini. Artikel ini pake tag &lt;article&gt; yang artinya konten independen.</p>
+                                </div>
+                                <div style="flex: 1; background: #10b981; padding: 20px; border-radius: 12px;">
+                                    <h4 style="color: white;">Sidebar</h4>
+                                    <p style="color: #cbd5e1;">Ini sidebar, biasanya buat link, iklan, atau info tambahan.</p>
+                                </div>
+                            </div>
+                            
+                            <div style="background: #8b5cf6; padding: 15px; text-align: center;">
+                                <p style="color: white;">© 2026 Website Gue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RINGKASAN -->
+            <div class="section">
+    <h2>📋 RINGKASAN BAB 6</h2>
+                
+                <div class="table-container">
+                    <table class="demo-table">
+                        <tr>
+                            <th>Tag</th>
+                            <th>Fungsi</th>
+                        </tr>
+                        <tr>
+                            <td>&lt;div&gt;</td>
+                            <td>Kontainer umum (paling sering dipake)</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;header&gt;</td>
+                            <td>Kepala halaman</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;nav&gt;</td>
+                            <td>Navigasi</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;main&gt;</td>
+                            <td>Konten utama</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;article&gt;</td>
+                            <td>Artikel/konten independen</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;section&gt;</td>
+                            <td>Bagian dari halaman</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;aside&gt;</td>
+                            <td>Sidebar/konten sampingan</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;footer&gt;</td>
+                            <td>Kaki halaman</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tip" style="margin-top: 20px;">
+                    <b>💡 TEKNIK LAYOUT MODERN:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Flexbox</strong> : buat layout 1 dimensi (baris ATAU kolom)</li>
+                        <li><strong>CSS Grid</strong> : buat layout 2 dimensi (baris DAN kolom)</li>
+                        <li><strong>Float</strong> : cara lama, udah jarang dipake</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- TUGAS PRAKTIK -->
+            <div class="task-box">
+                <h3>🚀 TUGAS PRAKTIK: Bikin Layout Blog</h3>
+                <p>Buat layout blog sederhana dengan struktur:</p>
+                <ul style="color: #cbd5e1; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Header (judul blog + navigasi)</li>
+                    <li>Main content dengan 2 kolom:
+                        <ul>
+                            <li>Kolom kiri: daftar artikel (pake artikel)</li>
+                            <li>Kolom kanan: sidebar (tentang penulis)</li>
+                        </ul>
+                    </li>
+                    <li>Footer</li>
+                    <li>Pake semantic HTML dan Flexbox/Grid</li>
+                </ul>
+                
+                <div class="task-preview">
+                    <h3 style="color: white; margin-bottom: 15px;">📝 Contoh Layout Blog</h3>
+                    
+                    <div style="background: #0f172a; border-radius: 16px; overflow: hidden; border: 1px solid #334155;">
+                        <!-- Header -->
+                        <div style="background: #3b82f6; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="color: white;">Blog Pribadi</h4>
+                            <div style="display: flex; gap: 15px;">
+                                <a href="#" style="color: white;">Home</a>
+                                <a href="#" style="color: white;">About</a>
+                                <a href="#" style="color: white;">Contact</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Main content dengan flex -->
+                        <div style="display: flex; gap: 20px; padding: 20px;">
+                            <!-- Kolom artikel -->
+                            <div style="flex: 3;">
+                                <div style="background: #2d3a4f; padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+                                    <h4 style="color: white;">Judul Artikel 1</h4>
+                                    <p style="color: #cbd5e1; font-size: 0.9rem;">Diposting: 5 Maret 2026</p>
+                                    <p style="color: #cbd5e1;">Ini adalah contoh artikel blog. Lo bisa nulis cerita, tutorial, atau apapun di sini...</p>
+                                </div>
+                                <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                                    <h4 style="color: white;">Judul Artikel 2</h4>
+                                    <p style="color: #cbd5e1; font-size: 0.9rem;">Diposting: 4 Maret 2026</p>
+                                    <p style="color: #cbd5e1;">Artikel kedua tentang pengalaman belajar HTML. Seru banget ternyata!</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Sidebar -->
+                            <div style="flex: 1;">
+                                <div style="background: #10b981; padding: 15px; border-radius: 12px;">
+                                    <h4 style="color: white;">Tentang Penulis</h4>
+                                    <p style="color: #cbd5e1;">Halo! Saya web developer pemula yang lagi semangat belajar HTML, CSS, dan JavaScript.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer -->
+                        <div style="background: #8b5cf6; padding: 15px; text-align: center;">
+                            <p style="color: white;">© 2026 Blog Pribadi - Dibuat pake HTML & CSS</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn" style="margin-top: 20px;" onclick="alert('Sekarang giliran lo buat layout sendiri!')">✨ KERJAIN TUGAS</button>
+            </div>
+            
+            <!-- NAVIGASI -->
+            <div class="bab-nav">
+                <a href="bab5.html">← BAB 5: Form</a>
+                <a href="bab7.html" class="next">BAB 7: Project →</a>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2026 HTML Mastery • Dibuat dengan ❤️ buat anak muda yang pengen jago coding</p>
+    </footer>
+    
+    <script>
+        function copyCode(type) {
+            let code = '';
+            
+            if (type === 'div-dasar') {
+                code = '<div style="background: #1e293b; padding: 20px;">\n    <h2>Judul dalam div</h2>\n    <p>Ini paragraf dalam div. Semua yang di sini jadi satu kelompok.</p>\n</div>';
+            } else if (type === 'div-nested') {
+                code = '<div style="background: #2d3a4f; padding: 20px;">\n    <h3>Div Luar</h3>\n    <div style="background: #0f172a; padding: 15px; margin: 10px 0;">\n        <p>Div dalam 1</p>\n    </div>\n    <div style="background: #0f172a; padding: 15px; margin: 10px 0;">\n        <p>Div dalam 2</p>\n    </div>\n</div>';
+            } else if (type === 'layout-classic') {
+                code = '<div class="header">HEADER</div>\n<div class="sidebar">SIDEBAR</div>\n<div class="content">CONTENT</div>\n<div class="footer">FOOTER</div>';
+            } else if (type === 'flexbox') {
+                code = '<div style="display: flex; gap: 10px;">\n    <div style="flex: 1;">Kolom 1</div>\n    <div style="flex: 1;">Kolom 2</div>\n    <div style="flex: 1;">Kolom 3</div>\n</div>';
+            } else if (type === 'flexbox-diff') {
+                code = '<div style="display: flex; gap: 10px;">\n    <div style="flex: 1;">Sidebar (1)</div>\n    <div style="flex: 3;">Content (3x lebih besar)</div>\n</div>';
+            } else if (type === 'grid') {
+                code = '<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">\n    <div>Item 1</div>\n    <div>Item 2</div>\n    <div>Item 3</div>\n    <div>Item 4</div>\n    <div>Item 5</div>\n    <div>Item 6</div>\n</div>';
+            } else if (type === 'grid-complex') {
+                code = '<div style="display: grid; grid-template-columns: 200px 1fr; gap: 10px;">\n    <div style="background: #10b981;">Sidebar 200px</div>\n    <div style="background: #3b82f6;">Content sisanya</div>\n    <div style="grid-column: span 2; background: #8b5cf6;">Footer (gabung 2 kolom)</div>\n</div>';
+            } else if (type === 'semantic') {
+                code = '<header>Ini header website</header>\n<nav>Ini menu navigasi</nav>\n<main>\n    <article>\n        <h2>Judul Artikel</h2>\n        <p>Isi artikel...</p>\n    </article>\n    <aside>Ini sidebar (konten sampingan)</aside>\n</main>\n<footer>Ini footer</footer>';
+            } else if (type === 'layout-full') {
+                code = '<body>\n    <header>\n        <h1>Website Gue</h1>\n        <nav>\n            <a href="#">Home</a>\n            <a href="#">About</a>\n            <a href="#">Contact</a>\n        </nav>\n    </header>\n    \n    <main style="display: flex; gap: 20px;">\n        <article style="flex: 3;">\n            <h2>Judul Artikel</h2>\n            <p>Isi artikel...</p>\n        </article>\n        \n        <aside style="flex: 1;">\n            <h3>Sidebar</h3>\n            <p>Konten sampingan...</p>\n        </aside>\n    </main>\n    \n    <footer>\n        <p>© 2026 Website Gue</p>\n    </footer>\n</body>';
+            }
+            
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Kode berhasil di-copy!');
+            });
+        }
+    </script>
+</body>
+</html>

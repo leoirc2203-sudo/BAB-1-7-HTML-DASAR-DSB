@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Link & Gambar | HTML Mastery</title>
+    <style>
+        /* ====================================
+           HTML MASTERY - MODERN DARK THEME
+           ==================================== */
+        
+        /* Font & Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 24px;
+            position: sticky;
+            top: 30px;
+            border: 1px solid #334155;
+        }
+        
+        .sidebar h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 12px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 14px;
+        }
+        
+        .sidebar a:hover {
+            background: #2d3a4f;
+            color: white;
+        }
+        
+        .sidebar a.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Progress */
+        .progress {
+            margin-top: 30px;
+            background: #2d3a4f;
+            height: 8px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 45%;
+            height: 100%;
+            background: #3b82f6;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+        
+        /* Content */
+        .content {
+            background: #1e293b;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #334155;
+        }
+        
+        .bab-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #60a5fa;
+        }
+        
+        .bab-desc {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 20px;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 span {
+            background: #2d3a4f;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        
+        /* Code Box */
+        .code-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+            font-family: monospace;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+        
+        .copy-btn {
+            background: #2d3a4f;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #3b82f6;
+        }
+        
+        .code-box pre {
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+        
+        /* Demo Box */
+        .demo-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        
+        .demo-title {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+        
+        .demo-preview {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        
+        /* Image demo */
+        .img-demo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #334155;
+        }
+        
+        .fake-img {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* Note Boxes */
+        .note {
+            background: #1e2a44;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .tip {
+            background: #1a3a3a;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background: #442a2a;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        /* Task Box */
+        .task-box {
+            background: #2d3a4f;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid #3b82f6;
+        }
+        
+        .task-preview {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        /* Navigation */
+        .bab-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+        
+        .bab-nav a {
+            text-decoration: none;
+            background: #2d3a4f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 40px;
+        }
+        
+        .bab-nav a:hover {
+            background: #3b82f6;
+        }
+        
+        .bab-nav .next {
+            background: #3b82f6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+            .content {
+                padding: 25px;
+            }
+            .bab-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>📚 DAFTAR MATERI</h3>
+            <ul>
+                <li><a href="bab1.html">📖 Bab 1: HTML itu Apa?</a></li>
+                <li><a href="bab2.html">⚡ Bab 2: Tag Dasar</a></li>
+                <li><a href="#" class="active">🔗 Bab 3: Link & Gambar</a></li>
+                <li><a href="bab4.html">📋 Bab 4: List & Tabel</a></li>
+                <li><a href="bab5.html">📝 Bab 5: Form</a></li>
+                <li><a href="bab6.html">🧱 Bab 6: Div & Layout</a></li>
+                <li><a href="bab7.html">🚀 Bab 7: Project</a></li>
+            </ul>
+            
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-text">45% • 3 dari 7 bab</div>
+            
+            <div class="sidebar-tips" style="margin-top: 30px; padding: 20px; background: #0f172a; border-radius: 16px;">
+                <p>💡 <b>Tips:</b> Kalo nyoba link, buka di tab baru biar ga ilang belajarnya!</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <h1 class="bab-title">🔗 BAB 3: LINK & GAMBAR</h1>
+            <div class="bab-desc">
+                "Biar websitenya bisa nyambung ke mana-mana dan keliatan kece pake gambar!"
+            </div>
+            
+            <!-- 1. LINK (ANCHOR) -->
+            <div class="section">
+                <h2>🔗 1. LINK <span>&lt;a&gt;</span></h2>
+                <p>Link atau hyperlink pake tag <code>&lt;a&gt;</code> (anchor). Ini yang bikin website bisa "berselancar" ke halaman lain.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('link')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;a href="https://google.com"&gt;Klik ke Google&lt;/a&gt;
+
+&lt;a href="halaman2.html"&gt;Ke halaman lain di website sendiri&lt;/a&gt;
+
+&lt;a href="#"&gt;Link gak kemana-mana (buat contoh)&lt;/a&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <p><a href="#" style="color: #3b82f6;">Klik ke Google</a> (tapi di sini gak berfungsi ya, cuma contoh)</p>
+                        <p><a href="#" style="color: #3b82f6;">Ke halaman lain</a></p>
+                        <p><a href="#" style="color: #3b82f6;">Link gak kemana-mana</a></p>
+                        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px;">⬆️ Biasanya link berwarna biru dan ada garis bawah</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <b>📌 ATRIBUT PENTING:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>href</code> : alamat yang dituju (wajib ada!)</li>
+                        <li><code>target="_blank"</code> : buka di tab baru</li>
+                        <li><code>title</code> : teks tooltip saat hover</li>
+                    </ul>
+                </div>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML (dengan atribut)</span>
+                        <button class="copy-btn" onclick="copyCode('link-atribut')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;a href="https://google.com" target="_blank" title="Menuju Google"&gt;
+    Buka Google di tab baru
+&lt;/a&gt;</pre>
+                </div>
+            </div>
+            
+            <!-- 2. GAMBAR -->
+            <div class="section">
+                <h2>🖼️ 2. GAMBAR <span>&lt;img&gt;</span></h2>
+                <p>Tag <code>&lt;img&gt;</code> buat nampilin gambar. Bedanya sama tag lain, <strong>img itu tag tunggal</strong> (gak perlu penutup).</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('gambar')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;img src="https://via.placeholder.com/300x200" alt="Gambar contoh"&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA:</div>
+                    <div class="demo-preview">
+                        <img src="https://via.placeholder.com/300x200/3b82f6/ffffff?text=Contoh+Gambar" alt="Gambar contoh" style="max-width: 100%; border-radius: 8px;">
+                        <p style="color: #94a3b8; margin-top: 10px;">⬆️ Gambar dari placeholder.com (gratis buat contoh)</p>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <b>📌 ATRIBUT PENTING:</b>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><code>src</code> : sumber gambar (URL atau file lokal) - <strong>WAJIB!</strong></li>
+                        <li><code>alt</code> : teks alternatif kalo gambar gagal load (penting buat aksesibilitas)</li>
+                        <li><code>width</code> & <code>height</code> : ukuran gambar</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 3. GAMBAR PAKE FILE LOKAL -->
+            <div class="section">
+                <h2>📁 3. GAMBAR DARI FILE LOKAL</h2>
+                <p>Kalo gambar nyimpen di folder project sendiri, tinggal kasih pathnya.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('gambar-lokal')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;!-- Kalo gambar satu folder sama file HTML --&gt;
+&lt;img src="kucing.jpg" alt="Kucing lucu"&gt;
+
+&lt;!-- Kalo gambar di folder gambar/ --&gt;
+&lt;img src="gambar/kucing.jpg" alt="Kucing lucu"&gt;
+
+&lt;!-- Kalo gambar di folder luar --&gt;
+&lt;img src="../foto/kucing.jpg" alt="Kucing lucu"&gt;</pre>
+                </div>
+                
+                <div class="tip">
+                    <b>💡 STRUKTUR FOLDER:</b>
+                    <pre style="background: #0f172a; padding: 15px; border-radius: 8px; margin-top: 10px;">
+belajar-html/
+├── bab3.html
+├── kucing.jpg           (satu folder)
+├── gambar/
+│   └── kucing.jpg       (di dalam folder)
+└── foto/
+    └── kucing.jpg       (folder lain)</pre>
+                </div>
+            </div>
+            
+            <!-- 4. GAMBAR SEBAGAI LINK -->
+            <div class="section">
+                <h2>🖱️ 4. GAMBAR SEBAGAI LINK</h2>
+                <p>Gambar juga bisa jadi link tinggal di dalemin tag &lt;a&gt;.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('gambar-link')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;a href="https://google.com"&gt;
+    &lt;img src="https://via.placeholder.com/200x100" alt="Klik gambar"&gt;
+&lt;/a&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">HASILNYA (coba klik gambarnya):</div>
+                    <div class="demo-preview">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/200x100/3b82f6/ffffff?text=Klik+Gambar" alt="Klik gambar" style="border-radius: 8px;">
+                        </a>
+                        <p style="color: #94a3b8; margin-top: 10px;">⬆️ Gambar ini bisa diklik (tapi di contoh gak kemana-mana)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 5. LINK INTERNAL (DALAM HALAMAN) -->
+            <div class="section">
+                <h2>⬇️ 5. LINK DALAM HALAMAN</h2>
+                <p>Bisa bikin link yang loncat ke bagian tertentu dalam halaman yang sama. Pake atribut <code>id</code>.</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>HTML</span>
+                        <button class="copy-btn" onclick="copyCode('link-internal')">📋 Copy</button>
+                    </div>
+                    <pre>
+&lt;!-- Bikin link ke bagian tertentu --&gt;
+&lt;a href="#bab3"&gt;Loncat ke Bab 3&lt;/a&gt;
+
+&lt;!-- Di bagian tujuan, kasih id --&gt;
+&lt;h2 id="bab3"&gt;Bab 3: Link & Gambar&lt;/h2&gt;</pre>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">COBA KLIK:</div>
+                    <div class="demo-preview">
+                        <p><a href="#" onclick="alert('Di halaman beneran, ini bakal loncat ke id yang dituju!'); return false;" style="color: #3b82f6;">🔝 Kembali ke atas</a> (di contoh cuma alert)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RINGKASAN TAG -->
+            <div class="section">
+                <h2>📋 RINGKASAN BAB 3</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Fungsi</th>
+                            <th>Atribut Penting</th>
+                        </tr>
+                        <tr>
+                            <td>&lt;a&gt;</td>
+                            <td>Membuat link</td>
+                            <td>href, target, title</td>
+                        </tr>
+                        <tr>
+                            <td>&lt;img&gt;</td>
+                            <td>Menampilkan gambar</td>
+                            <td>src, alt, width, height</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center;"><i>Tag tunggal: &lt;img&gt; (gak perlu penutup)</i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- TUGAS PRAKTIK -->
+            <div class="task-box">
+                <h3>🚀 TUGAS PRAKTIK: Bikin Galeri Foto</h3>
+                <p>Buat halaman HTML yang isinya:</p>
+                <ul style="color: #cbd5e1; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Judul "Galeri Foto Keren"</li>
+                    <li>3 gambar (boleh pake gambar online/placeholder)</li>
+                    <li>Setiap gambar bisa diklik dan membuka link ke sumber gambar</li>
+                    <li>Link "Kembali ke atas" di bagian bawah</li>
+                </ul>
+                
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <!-- Foto kucing 1 -->
+    <a href="kucing.jpg" target="_blank">
+        <img src="kucing.jpg" alt="Kucing 1" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #3b82f6;">
+    </a>
+    
+    <!-- Foto kucing 2 (kalo punya) -->
+    <a href="kucing2.jpg" target="_blank">
+        <img src="kucing2.jpg" alt="Kucing 2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #3b82f6;">
+    </a>
+    
+    <!-- Foto kucing 3 (kalo punya) -->
+    <a href="kucing3.jpg" target="_blank">
+        <img src="kucing3.jpg" alt="Kucing 3" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #3b82f6;">
+    </a>
+</div>
+                    <p style="margin-top: 20px;"><a href="#" style="color: #3b82f6;">⬆️ Kembali ke atas</a></p>
+                </div>
+                
+                <button class="btn" onclick="alert('Sekarang giliran lo buat!')">✨ KERJAIN TUGAS</button>
+            </div>
+            
+             <div class="bab-nav">
+                <a href="bab-4.html">Lanjut ke Bab 4</a>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2026 HTML Mastery • Dibuat dengan ❤️ buat anak muda yang pengen jago coding</p>
+    </footer>
+    
+    <script>
+        function copyCode(type) {
+            let code = '';
+            
+            if (type === 'link') {
+                code = '<a href="https://google.com">Klik ke Google</a>\n\n<a href="halaman2.html">Ke halaman lain di website sendiri</a>\n\n<a href="#">Link gak kemana-mana (buat contoh)</a>';
+            } else if (type === 'link-atribut') {
+                code = '<a href="https://google.com" target="_blank" title="Menuju Google">\n    Buka Google di tab baru\n</a>';
+            } else if (type === 'gambar') {
+                code = '<img src="https://via.placeholder.com/300x200" alt="Gambar contoh">';
+            } else if (type === 'gambar-lokal') {
+                code = '<!-- Kalo gambar satu folder sama file HTML -->\n<img src="kucing.jpg" alt="Kucing lucu">\n\n<!-- Kalo gambar di folder gambar/ -->\n<img src="kucing2.jpg" alt="Kucing lucu">\n\n<!-- Kalo gambar di folder luar -->\n<img src="kucing3.jpg" alt="Kucing lucu">';
+            } else if (type === 'gambar-link') {
+                code = '<a href="https://google.com">\n    <img src="https://via.placeholder.com/200x100" alt="Klik gambar">\n</a>';
+            } else if (type === 'link-internal') {
+                code = '<!-- Bikin link ke bagian tertentu -->\n<a href="#bab3">Loncat ke Bab 3</a>\n\n<!-- Di bagian tujuan, kasih id -->\n<h2 id="bab3">Bab 3: Link & Gambar</h2>';
+            }
+            
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Kode berhasil di-copy!');
+            });
+        }
+    </script>
+</body>
+</html>

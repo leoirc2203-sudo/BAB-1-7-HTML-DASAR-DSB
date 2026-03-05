@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Project Akhir | HTML Mastery</title>
+    <style>
+        /* ====================================
+           HTML MASTERY - MODERN DARK THEME
+           ==================================== */
+        
+        /* Font & Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 24px;
+            position: sticky;
+            top: 30px;
+            border: 1px solid #334155;
+        }
+        
+        .sidebar h3 {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            display: block;
+            padding: 12px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 14px;
+        }
+        
+        .sidebar a:hover {
+            background: #2d3a4f;
+            color: white;
+        }
+        
+        .sidebar a.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Progress */
+        .progress {
+            margin-top: 30px;
+            background: #2d3a4f;
+            height: 8px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: #10b981;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            color: #94a3b8;
+        }
+        
+        /* Content */
+        .content {
+            background: #1e293b;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #334155;
+        }
+        
+        .bab-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #10b981;
+        }
+        
+        .bab-desc {
+            color: #94a3b8;
+            margin-bottom: 40px;
+            border-left: 4px solid #10b981;
+            padding-left: 20px;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 span {
+            background: #2d3a4f;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+        
+        /* Code Box */
+        .code-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+            font-family: monospace;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+        
+        .copy-btn {
+            background: #2d3a4f;
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: #10b981;
+        }
+        
+        .code-box pre {
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+        
+        /* Demo Box */
+        .demo-box {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        
+        .demo-title {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+        
+        .demo-preview {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        
+        /* Project Preview */
+        .project-card {
+            background: #2d3a4f;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #10b981;
+        }
+        
+        .project-showcase {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        
+        /* Website Demo Styling */
+        .demo-website {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .demo-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .demo-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        
+        .demo-hero {
+            background: #f3f4f6;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .demo-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .demo-hero p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px 20px;
+            background: white;
+        }
+        
+        .demo-feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .demo-feature h3 {
+            margin: 15px 0 10px;
+        }
+        
+        .demo-footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Note Boxes */
+        .note {
+            background: #1e2a44;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .tip {
+            background: #1a3a3a;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .warning {
+            background: #442a2a;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .success {
+            background: #064e3b;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        /* Task Box */
+        .task-box {
+            background: #2d3a4f;
+            border-radius: 24px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid #10b981;
+        }
+        
+        .task-preview {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #059669;
+        }
+        
+        /* Navigation */
+        .bab-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+        }
+        
+        .bab-nav a {
+            text-decoration: none;
+            background: #2d3a4f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 40px;
+        }
+        
+        .bab-nav a:hover {
+            background: #10b981;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 50px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+            .content {
+                padding: 25px;
+            }
+            .bab-title {
+                font-size: 2rem;
+            }
+            .demo-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>📚 DAFTAR MATERI</h3>
+            <ul>
+                <li><a href="bab1.html">📖 Bab 1: HTML itu Apa?</a></li>
+                <li><a href="bab2.html">⚡ Bab 2: Tag Dasar</a></li>
+                <li><a href="bab3.html">🔗 Bab 3: Link & Gambar</a></li>
+                <li><a href="bab4.html">📋 Bab 4: List & Tabel</a></li>
+                <li><a href="bab5.html">📝 Bab 5: Form</a></li>
+                <li><a href="bab6.html">🧱 Bab 6: Div & Layout</a></li>
+                <li><a href="#" class="active">🚀 Bab 7: Project</a></li>
+            </ul>
+            
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="progress-text">100% • 7 dari 7 bab (SELESAI! 🎉)</div>
+            
+            <div class="sidebar-tips" style="margin-top: 30px; padding: 20px; background: #0f172a; border-radius: 16px;">
+                <p style="color: #10b981; font-weight: bold;">🎉 SELAMAT! Lo udah sampai bab terakhir!</p>
+                <p style="color: #94a3b8; margin-top: 10px;">Sekarang saatnya praktek bikin website beneran!</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="content">
+            <h1 class="bab-title">🚀 BAB 7: PROJECT AKHIR</h1>
+            <div class="bab-desc">
+                "Praktik bikin website beneran pake semua yang udah dipelajari!"
+            </div>
+            
+            <!-- 1. RINGKASAN MATERI -->
+            <div class="section">
+                <h2>📚 1. APA YANG UDAH DIPELAJARI?</h2>
+                
+                <div class="grid-demo" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">📖</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 1</h4>
+                        <p style="color: #94a3b8;">Struktur dasar HTML</p>
+                    </div>
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">⚡</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 2</h4>
+                        <p style="color: #94a3b8;">Tag dasar (heading, paragraf, format)</p>
+                    </div>
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">🔗</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 3</h4>
+                        <p style="color: #94a3b8;">Link & Gambar</p>
+                    </div>
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">📋</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 4</h4>
+                        <p style="color: #94a3b8;">List & Tabel</p>
+                    </div>
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">📝</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 5</h4>
+                        <p style="color: #94a3b8;">Form (input data)</p>
+                    </div>
+                    <div style="background: #2d3a4f; padding: 15px; border-radius: 12px;">
+                        <span style="font-size: 2rem;">🧱</span>
+                        <h4 style="color: white; margin: 10px 0;">Bab 6</h4>
+                        <p style="color: #94a3b8;">Div & Layout</p>
+                    </div>
+                </div>
+                
+                <div class="success">
+                    <b>🎉 SELAMAT! Lo udah punya semua skill dasar HTML!</b>
+                    <p style="margin-top: 10px;">Sekarang saatnya menggabungkan semua skill itu buat bikin website beneran.</p>
+                </div>
+            </div>
+            
+            <!-- 2. IDE PROJEK -->
+            <div class="section">
+                <h2>💡 2. IDE PROJEK YANG BISA DIBIKIN</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0;">
+                    <div style="background: #2d3a4f; padding: 20px; border-radius: 16px;">
+                        <h3 style="color: white; margin-bottom: 10px;">🌐 Website Profile</h3>
+                        <p style="color: #94a3b8;">Website pribadi buat nunjukin skill dan portofolio. Pake header, tentang saya, skill, kontak.</p>
+                    </div>
+                    
+                    <div style="background: #2d3a4f; padding: 20px; border-radius: 16px;">
+                        <h3 style="color: white; margin-bottom: 10px;">🏪 Landing Page Produk</h3>
+                        <p style="color: #94a3b8;">Halaman promosi produk dengan hero section, fitur, testimoni, dan form order.</p>
+                    </div>
+                    
+                    <div style="background: #2d3a4f; padding: 20px; border-radius: 16px;">
+                        <h3 style="color: white; margin-bottom: 10px;">📝 Blog Pribadi</h3>
+                        <p style="color: #94a3b8;">Layout blog dengan header, daftar artikel, sidebar, dan footer.</p>
+                    </div>
+                    
+                    <div style="background: #2d3a4f; padding: 20px; border-radius: 16px;">
+                        <h3 style="color: white; margin-bottom: 10px;">📊 Dashboard Admin</h3>
+                        <p style="color: #94a3b8;">Layout dengan sidebar navigasi, header, dan area konten buat data.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. CONTOH PROJEK 1: PORTOFOLIO PRIBADI -->
+            <div class="section">
+                <h2>👤 3. PROJEK 1: WEBSITE PORTOFOLIO</h2>
+                <p>Website buat nunjukin data diri, skill, dan project yang pernah dibikin.</p>
+                
+                <div class="project-showcase">
+                    <h3 style="color: white; margin-bottom: 20px;">📋 KODE LENGKAP PORTOFOLIO:</h3>
+                    
+                    <div class="code-box" style="max-height: 300px; overflow-y: auto;">
+                        <div class="code-header">
+                            <span>HTML</span>
+                            <button class="copy-btn" onclick="copyCode('portfolio')">📋 Copy Semua</button>
+                        </div>
+                        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Portofolio Gue&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-align: center; padding: 60px 20px; }
+        .avatar { width: 150px; height: 150px; border-radius: 50%; border: 5px solid white; margin-bottom: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        h2 { text-align: center; margin-bottom: 30px; }
+        .skills { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 30px 0; }
+        .skill { background: #667eea; color: white; padding: 10px 25px; border-radius: 50px; }
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { border: 1px solid #ddd; border-radius: 10px; overflow: hidden; }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card h3 { margin-bottom: 10px; }
+        .btn { display: inline-block; background: #667eea; color: white; padding: 10px 25px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        footer { background: #333; color: white; text-align: center; padding: 20px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;img src="https://via.placeholder.com/150" alt="foto" class="avatar"&gt;
+        &lt;h1&gt;Budi Pratama&lt;/h1&gt;
+        &lt;p&gt;Web Developer | HTML & CSS Enthusiast&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;div class="container"&gt;
+        &lt;h2&gt;Tentang Saya&lt;/h2&gt;
+        &lt;p style="text-align: center; max-width: 600px; margin: 0 auto;"&gt;
+            Halo! Saya web developer pemula yang udah bisa bikin website pake HTML & CSS. 
+            Saya suka belajar hal baru dan siap bantu bikin website buat lo!
+        &lt;/p&gt;
+        
+        &lt;h2 style="margin-top: 50px;"&gt;Skill&lt;/h2&gt;
+        &lt;div class="skills"&gt;
+            &lt;span class="skill"&gt;HTML5&lt;/span&gt;
+            &lt;span class="skill"&gt;CSS3&lt;/span&gt;
+            &lt;span class="skill"&gt;JavaScript (Dasar)&lt;/span&gt;
+            &lt;span class="skill"&gt;Responsive Design&lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;h2 style="margin-top: 50px;"&gt;Project&lt;/h2&gt;
+        &lt;div class="projects"&gt;
+            &lt;div class="card"&gt;
+                &lt;img src="https://via.placeholder.com/400x200" alt="project 1"&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h3&gt;Website Remaja Masjid&lt;/h3&gt;
+                    &lt;p&gt;Company profile buat organisasi remaja masjid. Ada informasi kegiatan, galeri, dan kontak.&lt;/p&gt;
+                    &lt;a href="#" class="btn"&gt;Lihat Project&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card"&gt;
+                &lt;img src="https://via.placeholder.com/400x200" alt="project 2"&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h3&gt;Website Surprise Ultah&lt;/h3&gt;
+                    &lt;p&gt;Landing page spesial buat kejutan orang tersayang. Ada countdown dan ucapan.&lt;/p&gt;
+           &lt;a href="#" class="btn"&gt;Lihat Project&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;h2 style="margin-top: 50px;"&gt;Kontak&lt;/h2&gt;
+        &lt;form style="max-width: 500px; margin: 0 auto;"&gt;
+            &lt;div style="margin-bottom: 15px;"&gt;
+                &lt;label for="nama"&gt;Nama:&lt;/label&gt;&lt;br&gt;
+                &lt;input type="text" id="nama" style="width: 100%; padding: 10px;"&gt;
+            &lt;/div&gt;
+            &lt;div style="margin-bottom: 15px;"&gt;
+                &lt;label for="email"&gt;Email:&lt;/label&gt;&lt;br&gt;
+                &lt;input type="email" id="email" style="width: 100%; padding: 10px;"&gt;
+            &lt;/div&gt;
+            &lt;div style="margin-bottom: 15px;"&gt;
+                &lt;label for="pesan"&gt;Pesan:&lt;/label&gt;&lt;br&gt;
+                &lt;textarea id="pesan" rows="5" style="width: 100%; padding: 10px;"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" style="background: #667eea; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer;"&gt;Kirim Pesan&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 Budi Pratama. Dibuat pake HTML & CSS.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">🎨
+                    PREVIEW HASILNYA (kurang lebih):</div>
+                    <div class="demo-preview">
+                        <div style="background: white; border-radius: 16px; overflow: hidden; color: #333;">
+                            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; text-align: center; padding: 40px 20px;">
+                                <div style="width: 100px; height: 100px; background: white; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: #667eea; font-size: 2rem;">👤</div>
+                                <h1 style="font-size: 2rem;">Budi Pratama</h1>
+                                <p>Web Developer | HTML & CSS Enthusiast</p>
+                            </div>
+                            <div style="padding: 30px;">
+                                <h2 style="text-align: center; margin-bottom: 20px;">Tentang Saya</h2>
+                                <p style="text-align: center;">Halo! Saya web developer pemula yang udah bisa bikin website pake HTML & CSS.</p>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: center; margin: 30px 0; flex-wrap: wrap;">
+                                    <span style="background: #667eea; color: white; padding: 8px 20px; border-radius: 50px;">HTML5</span>
+                                    <span style="background: #667eea; color: white; padding: 8px 20px; border-radius: 50px;">CSS3</span>
+                                    <span style="background: #667eea; color: white; padding: 8px 20px; border-radius: 50px;">JavaScript</span>
+                                </div>
+                            </div>
+                            <div style="background: #f3f4f6; padding: 20px; text-align: center;">
+                                <p>© 2026 Budi Pratama</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4. CONTOH PROJEK 2: LANDING PAGE PRODUK -->
+            <div class="section">
+                <h2>🏷️ 4. PROJEK 2: LANDING PAGE PRODUK</h2>
+                
+                <div class="project-showcase">
+                    <h3 style="color: white; margin-bottom: 20px;">📋 KODE LENGKAP LANDING PAGE:</h3>
+                    
+                    <div class="code-box" style="max-height: 300px; overflow-y: auto;">
+                        <div class="code-header">
+                            <span>HTML</span>
+                            <button class="copy-btn" onclick="copyCode('landing')">📋 Copy Semua</button>
+                        </div>
+                        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Produk Keren - Landing Page&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
+        
+        /* Header */
+        header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #2563eb; }
+        nav a { margin-left: 30px; text-decoration: none; color: #333; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; text-align: center; padding: 100px 20px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; }
+        .btn { background: white; color: #2563eb; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        
+        /* Features */
+        .features { padding: 80px 5%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .feature { text-align: center; padding: 30px; }
+        .feature .icon { font-size: 3rem; }
+        .feature h3 { margin: 20px 0 10px; }
+        
+        /* Footer */
+        footer { background: #1f2937; color: white; text-align: center; padding: 40px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;div class="logo"&gt;🚀 ProdukKeren&lt;/div&gt;
+        &lt;nav&gt;
+            &lt;a href="#"&gt;Home&lt;/a&gt;
+            &lt;a href="#"&gt;Fitur&lt;/a&gt;
+            &lt;a href="#"&gt;Harga&lt;/a&gt;
+            &lt;a href="#"&gt;Kontak&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;div class="hero"&gt;
+        &lt;h1&gt;Tingkatkan Produktivitas&lt;br&gt;dengan Produk Keren&lt;/h1&gt;
+        &lt;p&gt;Solusi digital buat bantu lo kerja lebih cepet dan efisien. Udah dipake 1000+ user!&lt;/p&gt;
+        &lt;a href="#" class="btn"&gt;Coba Gratis 14 Hari&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="features"&gt;
+        &lt;div class="feature"&gt;
+            &lt;div class="icon"&gt;⚡&lt;/div&gt;
+            &lt;h3&gt;Cepat&lt;/h3&gt;
+            &lt;p&gt;Loading cepet banget, ga bikin lo nunggu lama.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="feature"&gt;
+            &lt;div class="icon"&gt;🔒&lt;/div&gt;
+            &lt;h3&gt;Aman&lt;/h3&gt;
+            &lt;p&gt;Data lo terenkripsi dan aman dari hacker.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="feature"&gt;
+            &lt;div class="icon"&gt;📱&lt;/div&gt;
+            &lt;h3&gt;Responsive&lt;/h3&gt;
+            &lt;p&gt;Bisa diakses dari HP, tablet, atau laptop.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;© 2026 ProdukKeren. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                </div>
+            </div>
+             <!-- 5. CONTOH PROJEK 3: FORM PENDAFTARAN -->
+            <div class="section">
+                <h2>📝 5. PROJEK 3: FORM PENDAFTARAN</h2>
+                
+                <div class="project-showcase">
+                    <div class="code-box" style="max-height: 300px; overflow-y: auto;">
+                        <div class="code-header">
+                            <span>HTML</span>
+                            <button class="copy-btn" onclick="copyCode('form')">📋 Copy Semua</button>
+                        </div>
+                        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Form Pendaftaran&lt;/title&gt;
+    &lt;style&gt;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; margin-bottom: 30px; color: #333; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #555; font-weight: 500; }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .radio-group { display: flex; gap: 20px; }
+        .radio-item { display: flex; align-items: center; gap: 8px; }
+        .radio-item input { width: auto; }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover { background: #764ba2; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="form-container"&gt;
+        &lt;h1&gt;📝 Form Pendaftaran&lt;/h1&gt;
+        
+        &lt;form&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Nama Lengkap&lt;/label&gt;
+                &lt;input type="text" placeholder="Masukkan nama"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Email&lt;/label&gt;
+                &lt;input type="email" placeholder="contoh@email.com"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Password&lt;/label&gt;
+                &lt;input type="password" placeholder="******"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Jenis Kelamin&lt;/label&gt;
+                &lt;div class="radio-group"&gt;
+                    &lt;div class="radio-item"&gt;
+                        &lt;input type="radio" name="gender"&gt; &lt;label&gt;Pria&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="radio-item"&gt;
+                        &lt;input type="radio" name="gender"&gt; &lt;label&gt;Wanita&lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Kota&lt;/label&gt;
+                &lt;select&gt;
+                    &lt;option&gt;Jakarta&lt;/option&gt;
+                    &lt;option&gt;Bandung&lt;/option&gt;
+                    &lt;option&gt;Surabaya&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Pesan&lt;/label&gt;
+                &lt;textarea rows="4" placeholder="Tulis pesan...&lt;/textarea&gt;
+            &lt;/div&gt;
+            
+            &lt;button type="submit"&gt;Daftar Sekarang&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </div>
+                </div>
+            </div>
+            <!-- 6. TUGAS AKHIR -->
+            <div class="task-box">
+                <h2 style="color: white; margin-bottom: 20px;">🎯 TUGAS AKHIR: BIKIN WEBSITE SENDIRI!</h2>
+                
+                <div style="background: #0f172a; padding: 25px; border-radius: 16px; margin-bottom: 25px;">
+                    <h3 style="color: #10b981; margin-bottom: 15px;">📋 SPESIFIKASI MINIMAL:</h3>
+                    <ul style="color: #cbd5e1; margin-left: 20px;">
+                        <li>✅ Pake struktur HTML yang benar (DOCTYPE, html, head, body)</li>
+                        <li>✅ Minimal 5 jenis tag berbeda (heading, paragraf, link, gambar, list, dll)</li>
+                        <li>✅ Ada navigasi (menu)</li>
+                        <li>✅ Ada gambar (bisa dari internet atau file lokal)</li>
+                        <li>✅ Ada form (minimal input nama dan email)</li>
+                        <li>✅ Pake div buat layout (header, content, footer)</li>
+                        <li>✅ Ada CSS styling (warna, font, layout)</li>
+                    </ul>
+                    
+                    <h3 style="color: #10b981; margin: 25px 0 15px;">💡 IDE TAMBAHAN:</h3>
+                    <ul style="color: #cbd5e1; margin-left: 20px;">
+                        <li>✨ Responsive design (bisa dibuka di HP)</li>
+                        <li>✨ Animasi sederhana (hover effects)</li>
+                        <li>✨ Flexbox atau Grid buat layout</li>
+                        <li>✨ Semantic HTML (header, nav, main, footer)</li>
+                        <li>✨ List, tabel, atau form yang kompleks</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="btn" onclick="alert('Sekarang giliran lo bikin website sendiri! Kalo bingung, tinggal tanya!')">✨ MULAI PROJEK</button>
+                </div>
+            </div>
+            <!-- 7. PESAN TERAKHIR -->
+            <div class="section">
+                <div style="background: linear-gradient(135deg, #065f46, #064e3b); padding: 40px; border-radius: 24px; text-align: center;">
+                    <span style="font-size: 4rem;">🎉</span>
+                    <h2 style="color: white; font-size: 2rem; margin: 20px 0;">SELAMAT! LO UDAH MENYELESAIKAN SEMUA BAB!</h2>
+                    <p style="color: #a7f3d0; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                        Dari nol sampai bisa bikin website sendiri. Ini baru awal! Terus belajar dan jangan pernah berhenti ngoding.
+                    </p>
+                    
+                    <div style="margin-top: 30px;">
+                        <p style="color: white; font-weight: bold;">🚀 LANGKAH SELANJUTNYA:</p>
+                        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.2); color: white; padding: 8px 20px; border-radius: 50px;">Belajar CSS Lanjutan</span>
+                            <span style="background: rgba(255,255,255,0.2); color: white; padding: 8px 20px; border-radius: 50px;">Belajar JavaScript</span>
+                            <span style="background: rgba(255,255,255,0.2); color: white; padding: 8px 20px; border-radius: 50px;">Bikin Project Freelance</span>
+                            <span style="background: rgba(255,255,255,0.2); color: white; padding: 8px 20px; border-radius: 50px;">Belajar Framework</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NAVIGASI -->
+            <div class="bab-nav">
+                <a href="bab6.html">← BAB 6: Div & Layout</a>
+                <a href="bab1.html" style="background: #10b981;">🔄 Ulang dari Bab 1</a>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2026 HTML Mastery • Dibuat dengan ❤️ buat anak muda yang pengen jago coding</p>
+        <p style="margin-top: 25px; color: #10b981;">🚀 SELESAI! SEKARANG GILIRAN LO BIKIN WEBSITE SENDIRI!</p>
+    </footer>
